@@ -2,6 +2,8 @@ function validateCreditCard(creditCardNum) {
     sixteenDigitsCheck();
     allAreNumbersCheck()
     differentDigitsCheck();
+    lastDigitIsEven();
+    sumOfDigitsIsMoreThanSixteen();
 };
 
 //             CHECKING FOR 16 DIGITS
@@ -28,19 +30,43 @@ allAreNumbersCheck(creditCardNum)
 function differentDigitsCheck(creditCardNum) {
     const cardDigits = '1234567890';
     let countDigits = 0;
-    for (let i = 0; i < creditCardNum.length; i++) {
-        if (creditCardNum[i].includes(cardDigits)) {
-            countDigits++;
-        }
+    for (let i = 0; i < array.length; i++) {
+
     }
 }
 
 differentDigitsCheck(creditCardNum)
 
 
+// for (let i = 0; i < creditCardNum.length; i++) {
+//     if (creditCardNum[i].includes(cardDigits[i])) {
+//         countDigits++;
+//     }
+// }
 
 
+//  FINDING IF THE LAST DIGIT IS EVEN
 
+function lastDigitIsEven(creditCardNum) {
+    if (creditCardNum[creditCardNum.length - 1] % 2 !== 0) {
+        return false;
+    }
+}
+
+lastDigitIsEven(creditCardNum)
+
+
+// CHECKING THAT THE SUM OF DIGITS IS GREATER THAN 16
+
+function sumOfDigitsIsMoreThanSixteen(creditCardNum) {
+    let sumOfAll = 0;
+    for (let i = 0; i < creditCardNum.length; i++) {
+        sumOfAll += creditCardNum[i];
+        if (!sumOfAll > 16) {
+            return false;
+        }
+    }
+}
 
 
 
