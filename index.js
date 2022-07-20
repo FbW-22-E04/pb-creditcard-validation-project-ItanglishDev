@@ -24,10 +24,6 @@ function allAreNumbersCheck(creditCardNum) {
 allAreNumbersCheck(creditCardNum)
 
 
-
-
-
-
 //  CHECKING IF THERE ARE AT LEAST TWO DIFFERENT DIGITS
 function differentDigitsCheck(creditCardNum) {
     const cardDigits = '1234567890';
