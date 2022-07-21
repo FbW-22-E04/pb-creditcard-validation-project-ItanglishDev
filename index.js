@@ -1,20 +1,21 @@
 function validateCreditCard(creditCardNum) {
     if (sixteenDigitsCheck(creditCardNum) === false)
-        return false;
+        return console.log('not enough digits');
 
     if (allAreNumbersCheck(creditCardNum) === false)
-        return false;
+        return console.log('invalid character');;
 
     if (differentDigitsCheck(creditCardNum) === false)
-        return false;
+        return console.log('only one type of number');
 
     if (lastDigitIsEven(creditCardNum) === false)
-        return false;
+        return console.log("odd final number");
 
-    if (sumOfDigitsIsMoreThanSixteen(creditCardNum) === false) return false;
+    if (sumOfDigitsIsMoreThanSixteen(creditCardNum) === false) return console.log('sum less than 16');
 
-    return true;
+    return console.log("Credit card is valid");
 }
+
 // console.log(sixteenDigitsCheck('4444444444444444'));
 // console.log(allAreNumbersCheck('22222222222222a4'));
 // console.log("here", differentDigitsCheck('4444444444442'));
@@ -22,11 +23,13 @@ function validateCreditCard(creditCardNum) {
 // console.log(validateCreditCard('4444444444444444'));
 // console.log(lastDigitIsEven('4444444444444444'));
 // console.log(sumOfDigitsIsMoreThanSixteen('4444444444444444'));
-console.log("VALIDATION", validateCreditCard('1111111111111111'));
+// console.log("VALIDATION", 
+validateCreditCard('345605678890609878')
+// );
 
 //             CHECKING FOR 16 DIGITS
 function sixteenDigitsCheck(creditCardNum) {
-    if (creditCardNum.length !== 16) {
+    if (creditCardNum.length < 16) {
         return false;
     } return true;
 }
@@ -39,7 +42,7 @@ function allAreNumbersCheck(creditCardNum) {
         if (!cardDigits.includes(creditCardNum[i]))
             return false;
     }
-    return true;
+    // return false;
 }
 // console.log(allAreNumbersCheck("2637485968574636"));
 
@@ -90,11 +93,11 @@ function sumOfDigitsIsMoreThanSixteen(creditCardNum) {
     let sumOfAll = 0;
     for (let i = 0; i < creditCardNum.length; i++) {
         sumOfAll += Number(creditCardNum[i]);
-        if (!sumOfAll >= 16) {
-            return false;
-        } else {
+        if (sumOfAll >= 16) {
             return true;
+
         }
+        return false;
     }
 }
 
