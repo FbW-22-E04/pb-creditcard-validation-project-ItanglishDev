@@ -1,36 +1,39 @@
 function validateCreditCard(creditCardNum) {
     if (sixteenDigitsCheck(creditCardNum) &&
-        allAreNumbersCheck(creditCardNum))
-    // differentDigitsCheck(creditCardNum) ||
-    // lastDigitIsEven(creditCardNum)
-    // // sumOfDigitsIsMoreThanSixteen();
-    {
+        allAreNumbersCheck(creditCardNum) &&
+        differentDigitsCheck(creditCardNum) &&
+        lastDigitIsEven(creditCardNum)) {
+        // sumOfDigitsIsMoreThanSixteen();
+
         console.log("valid card");
-    } else {
+    }
+
+    else {
         console.log("not valid!!!");
     }
-};
+}
 
 
-
+validateCreditCard('101283749634222');
 
 //             CHECKING FOR 16 DIGITS
 function sixteenDigitsCheck(creditCardNum) {
-    if (creditCardNum.length != 16) {
-        return false;
-    } return true;
+    if (creditCardNum.length === 16) {
+        return true;
+    } return false;
 }
 
 
 //         CHECKING THAT ALL ARE NUMBERS
 function allAreNumbersCheck(creditCardNum) {
+    let cardDigits = ("1234567890");
     for (let i = 0; i < creditCardNum.length; i++) {
         if (!cardDigits.includes(creditCardNum[i])) {
             return false;
         } return true;
     }
 }
-// allAreNumbersCheck(creditCardNum)
+// console.log(allAreNumbersCheck("2637485968574636"));
 
 
 //  CHECKING IF THERE ARE AT LEAST TWO DIFFERENT DIGITS
@@ -49,7 +52,7 @@ function differentDigitsCheck(creditCardNum) {
 //  FINDING IF THE LAST DIGIT IS EVEN
 
 function lastDigitIsEven(creditCardNum) {
-    if (creditCardNum[creditCardNum.length - 1] % 2 !== 0) {
+    if (creditCardNum[creditCardNum.length - 1] % 2 != 0) {
         return false;
     }
 }
@@ -71,7 +74,7 @@ function sumOfDigitsIsMoreThanSixteen(creditCardNum) {
     }
 }
 
-validateCreditCard('10128374396340')
+
 
 /**** tests *****/
 // console.log(validateCreditCard('9999777788880000')); //{ valid: true, number: '9999-7777-8888-0000' }
