@@ -39,9 +39,17 @@ function allAreNumbersCheck(creditCardNum) {
 //  CHECKING IF THERE ARE AT LEAST TWO DIFFERENT DIGITS
 function differentDigitsCheck(creditCardNum) {
     const cardDigits = '1234567890';
-    let countDigits = 0;
     for (let i = 0; i < creditCardNum.length; i++) {
-
+        let counter = 0;
+        for (let j = 0; j < cardDigits.length; j++) {
+            if (creditCardNum[i] === cardDigits[j]) {
+                counter++;
+            }
+            if (counter === 16) {
+                return false;
+            }
+        }
+        return true;
     }
 }
 
@@ -66,7 +74,7 @@ function sumOfDigitsIsMoreThanSixteen(creditCardNum) {
     let sumOfAll = 0;
     for (let i = 0; i < creditCardNum.length; i++) {
         sumOfAll += Number(creditCardNum[i]);
-        if (!sumOfAll > 16) {
+        if (!sumOfAll >= 16) {
             return false;
         } else {
             return true;
