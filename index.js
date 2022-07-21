@@ -1,56 +1,70 @@
 function validateCreditCard(creditCardNum) {
-    if (sixteenDigitsCheck(creditCardNum) &&
-        allAreNumbersCheck(creditCardNum) &&
-        differentDigitsCheck(creditCardNum) &&
-        lastDigitIsEven(creditCardNum)) {
-        // sumOfDigitsIsMoreThanSixteen();
+    if (sixteenDigitsCheck(creditCardNum) === false)
+        return false;
 
-        console.log("valid card");
-    }
+    if (allAreNumbersCheck(creditCardNum) === false)
+        return false;
 
-    else {
-        console.log("not valid!!!");
-    }
+    if (differentDigitsCheck(creditCardNum) === false)
+        return false;
+
+    if (lastDigitIsEven(creditCardNum) === false)
+        return false;
+
+    if (sumOfDigitsIsMoreThanSixteen(creditCardNum) === false) return false;
+
+    return true;
 }
+// console.log(sixteenDigitsCheck('4444444444444444'));
+// console.log(allAreNumbersCheck('22222222222222a4'));
+// console.log("here", differentDigitsCheck('4444444444442'));
 
-
-validateCreditCard('101283749634222');
+// console.log(validateCreditCard('4444444444444444'));
+// console.log(lastDigitIsEven('4444444444444444'));
+// console.log(sumOfDigitsIsMoreThanSixteen('4444444444444444'));
+console.log("VALIDATION", validateCreditCard('1111111111111111'));
 
 //             CHECKING FOR 16 DIGITS
 function sixteenDigitsCheck(creditCardNum) {
-    if (creditCardNum.length === 16) {
-        return true;
-    } return false;
+    if (creditCardNum.length !== 16) {
+        return false;
+    } return true;
 }
 
 
 //         CHECKING THAT ALL ARE NUMBERS
 function allAreNumbersCheck(creditCardNum) {
-    let cardDigits = ("1234567890");
+    const cardDigits = "1234567890";
     for (let i = 0; i < creditCardNum.length; i++) {
-        if (!cardDigits.includes(creditCardNum[i])) {
+        if (!cardDigits.includes(creditCardNum[i]))
             return false;
-        } return true;
     }
+    return true;
 }
 // console.log(allAreNumbersCheck("2637485968574636"));
 
 
 //  CHECKING IF THERE ARE AT LEAST TWO DIFFERENT DIGITS
 function differentDigitsCheck(creditCardNum) {
-    const cardDigits = '1234567890';
-    for (let i = 0; i < creditCardNum.length; i++) {
-        let counter = 0;
-        for (let j = 0; j < cardDigits.length; j++) {
-            if (creditCardNum[i] === cardDigits[j]) {
-                counter++;
-            }
-            if (counter === 16) {
-                return false;
-            }
-        }
-        return true;
+    const cardDigits = ("0123456789");
+    for (let i = 0; i < creditCardNum.length - 1; i++) {
+
+        if (creditCardNum[i] !== creditCardNum[i + 1]) return true;
     }
+
+    return false
+
+    // for (let i = 0; i < cardDigits.length; i++) {
+    //     let counter = 0;
+    //     for (let j = 0; j < creditCardNum.length; j++) {
+    //         if (creditCardNum[i] === cardDigits[j]) counter++
+    //     }
+    //     if (counter === 16) return false;
+
+
+    //     console.log(counter);
+    // }
+    // return true;
 }
 
 // differentDigitsCheck(creditCardNum)
@@ -60,8 +74,10 @@ function differentDigitsCheck(creditCardNum) {
 //  FINDING IF THE LAST DIGIT IS EVEN
 
 function lastDigitIsEven(creditCardNum) {
-    if (creditCardNum[creditCardNum.length - 1] % 2 != 0) {
+    if (creditCardNum[creditCardNum.length - 1] % 2 !== 0) {
         return false;
+    } else {
+        return true;
     }
 }
 
