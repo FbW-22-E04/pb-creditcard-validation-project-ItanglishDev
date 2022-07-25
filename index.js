@@ -34,25 +34,26 @@ function validateCreditCard(creditCardNum) {
         'only one type of number',
         "odd final number",
         'sum less than 16',
-
     ]
 
+    let errorsIndex = functions.indexOf(false);
+
     let lastStatement = {
-        valid: 'we'
+        valid: errorsIndex === -1 ? true : false,
+        number: creditCardNum
     }
 
-    // for (let i = 0; i < functions.length; i++) {
-    //     if (functions[i] === false) {
-    //         return "valid:", functions[i], ",", "number", creditCardNum, "error", errors[i];
-    //     } else {
-    //         return creditCardNum, errors[5];
-    //     }
+    if (!(errorsIndex === -1)) {
+        lastStatement.error = errors[errorsIndex]
+    }
 
-    // }
+
+    return lastStatement;
 }
 
 
-validateCreditCard('2222-2222-0000-2221')
+
+console.log(validateCreditCard('2222-a222-0000-2222'));
 // );
 
 //             CHECKING FOR 16 DIGITS
