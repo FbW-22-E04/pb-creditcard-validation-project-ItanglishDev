@@ -35,25 +35,25 @@ function validateCreditCard(creditCardNum) {
         "odd final number",
         'sum less than 16',
     ]
-
+    const notAnError = "valid"
     let errorsIndex = functions.indexOf(false);
 
     let lastStatement = {
         valid: errorsIndex === -1 ? true : false,
-        number: creditCardNum
+        number: creditCardNumFinal = creditCardNum.slice(0, 4) + "-" + creditCardNum.slice(4, 8) + "-" + creditCardNum.slice(8, 12) + "-" + creditCardNum.slice(12, 16)
     }
 
     if (!(errorsIndex === -1)) {
         lastStatement.error = errors[errorsIndex]
+    } else {
+        lastStatement["the card is"] = notAnError
     }
-
-
     return lastStatement;
 }
 
 
 
-console.log(validateCreditCard('2222-a222-0000-2222'));
+console.log(validateCreditCard('2222-2252-3452-2222'));
 // );
 
 //             CHECKING FOR 16 DIGITS
