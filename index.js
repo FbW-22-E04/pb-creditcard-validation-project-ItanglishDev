@@ -1,4 +1,10 @@
 function validateCreditCard(creditCardNum) {
+    if (creditCardNum.includes('-')) {
+        let newCreditCardNum = "";
+        newCreditCardNum = creditCardNum.replace(/\-/g, '');
+        creditCardNum = newCreditCardNum;
+    }
+
     if (sixteenDigitsCheck(creditCardNum) === false)
         return console.log('not enough digits');
 
@@ -16,15 +22,8 @@ function validateCreditCard(creditCardNum) {
     return console.log("Credit card is valid");
 }
 
-// console.log(sixteenDigitsCheck('4444444444444444'));
-// console.log(allAreNumbersCheck('22222222222222a4'));
-// console.log("here", differentDigitsCheck('4444444444442'));
 
-// console.log(validateCreditCard('4444444444444444'));
-// console.log(lastDigitIsEven('4444444444444444'));
-// console.log(sumOfDigitsIsMoreThanSixteen('4444444444444444'));
-// console.log("VALIDATION", 
-validateCreditCard('345605678890609878')
+validateCreditCard('2222-2222-0000-2222')
 // );
 
 //             CHECKING FOR 16 DIGITS
@@ -93,13 +92,14 @@ function sumOfDigitsIsMoreThanSixteen(creditCardNum) {
     let sumOfAll = 0;
     for (let i = 0; i < creditCardNum.length; i++) {
         sumOfAll += Number(creditCardNum[i]);
-        if (sumOfAll >= 16) {
-            return true;
-
-        }
-        return false;
     }
+    if (sumOfAll >= 16) {
+        return true;
+
+    }
+    return false;
 }
+
 
 
 
