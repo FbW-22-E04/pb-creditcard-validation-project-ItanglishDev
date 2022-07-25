@@ -5,25 +5,54 @@ function validateCreditCard(creditCardNum) {
         creditCardNum = newCreditCardNum;
     }
 
-    if (sixteenDigitsCheck(creditCardNum) === false)
-        return console.log('not enough digits');
+    // if (sixteenDigitsCheck(creditCardNum) === false)
+    //     return console.log();
 
-    if (allAreNumbersCheck(creditCardNum) === false)
-        return console.log('invalid character');;
+    // if (allAreNumbersCheck(creditCardNum) === false)
+    //     return console.log();;
 
-    if (differentDigitsCheck(creditCardNum) === false)
-        return console.log('only one type of number');
+    // if (differentDigitsCheck(creditCardNum) === false)
+    //     return console.log();
 
-    if (lastDigitIsEven(creditCardNum) === false)
-        return console.log("odd final number");
+    // if (lastDigitIsEven(creditCardNum) === false)
+    //     return console.log();
 
-    if (sumOfDigitsIsMoreThanSixteen(creditCardNum) === false) return console.log('sum less than 16');
+    // if (sumOfDigitsIsMoreThanSixteen(creditCardNum) === false) return console.log();
 
-    return console.log("Credit card is valid");
+    // return console.log();
+    const functions = [
+        sixteenDigitsCheck(creditCardNum),
+        allAreNumbersCheck(creditCardNum),
+        differentDigitsCheck(creditCardNum),
+        lastDigitIsEven(creditCardNum),
+        sumOfDigitsIsMoreThanSixteen(creditCardNum)
+    ];
+
+    const errors = [
+        'not enough digits',
+        'invalid character',
+        'only one type of number',
+        "odd final number",
+        'sum less than 16',
+
+    ]
+
+    let lastStatement = {
+        valid: 'we'
+    }
+
+    // for (let i = 0; i < functions.length; i++) {
+    //     if (functions[i] === false) {
+    //         return "valid:", functions[i], ",", "number", creditCardNum, "error", errors[i];
+    //     } else {
+    //         return creditCardNum, errors[5];
+    //     }
+
+    // }
 }
 
 
-validateCreditCard('2222-2222-0000-2222')
+validateCreditCard('2222-2222-0000-2221')
 // );
 
 //             CHECKING FOR 16 DIGITS
